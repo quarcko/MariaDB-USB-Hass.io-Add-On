@@ -5,10 +5,12 @@
 if [[ ! -e /share/usb ]]; then
     mkdir -p /share/usb
     chmod -R 0777 /share/usb
+    bashio::log.info "Create mount point for USB disk..."
 fi
 
 if [[ -e /dev/sda1 ]]; then
     mount /dev/sda1 /share/usb
+    bashio::log.info "Mounting USB disk..."
 fi
 
 MARIADB_DATA=/share/usb/databases
@@ -24,8 +26,8 @@ else
 fi
 
 # Redirect log output
-rm -f /data/databases/mariadb.err
-ln -s /proc/1/fd/1 /data/databases/mariadb.err
+rm -f /share/usb/databases/mariadb.err
+ln -s /proc/1/fd/1 /share/usb/databases/mariadb.err
 
 # Start mariadb
 bashio::log.info "Starting MariaDB"
@@ -98,8 +100,8 @@ for right in $(bashio::config "rights|keys"); do
 done
 
 # Generate service user
-if ! bashio::fs.file_exists "/data/secret"; then
-    pwgen 64 1 > /data/secret
+if ! bashio::fs.file_exists "/share/usb/secret"; then
+    pwgen 64 1 > /share/usb/secret
 fi
 SECRET=$(</data/secret)
 mysql -e "CREATE USER 'service'@'172.30.32.%' IDENTIFIED BY '${SECRET}';" 2> /dev/null || true
