@@ -28,7 +28,6 @@
     "logins": [{ "username": "str", "password": "str" }],
     "rights": [{ "username": "str", "database": "str" }]
   },
-  "image": "homeassistant/{arch}-addon-mariadb",
   "devices": ["/dev/sda1:/dev/sda1:rwm"],
   "full_access": true
 }
