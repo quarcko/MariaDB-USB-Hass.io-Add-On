@@ -1,6 +1,6 @@
 {
-  "name": "MariaDB",
-  "version": "2.1.2",
+  "name": "MariaDB-USB",
+  "version": "2.1.2.0",
   "slug": "mariadb",
   "description": "An USB-SQL database server",
   "url": "https://github.com/quarcko/MariaDB-USB-Hass.io-Add-On/tree/master/mariadb",
