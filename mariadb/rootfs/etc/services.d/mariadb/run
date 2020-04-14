@@ -2,6 +2,9 @@
 # ==============================================================================
 # Start MariaDB service if enabled
 # ==============================================================================
+bashio::log.info "Welcome to modified USB-MYSQL Database sparing your precious uSD cards!"
+
+
 if [[ ! -e /share/usb ]]; then
     mkdir -p /share/usb
     chmod -R 0777 /share/usb
